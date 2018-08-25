@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Typer",
+        "repositoryURL": "https://github.com/Samasaur1/Typer.git",
+        "state": {
+          "branch": null,
+          "revision": "848664667d9b5cfac2131206122f9d7938c38cf0",
+          "version": "1.5.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
