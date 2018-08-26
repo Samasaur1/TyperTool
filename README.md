@@ -59,3 +59,9 @@ Here is the recommended order. Use the first option that you meet all the requir
 2. Mint / Marathon
 3. Building from source
 4. Install script / Download and install
+
+## Usage
+
+![Demo](https://github.com/Samasaur1/TyperTool/raw/master/typer-demo.gif)
+
+Note: Due to this being online, this GIF has probably been slowed down. To view it at full speed, you can download it, or just install TyperTool and try it out.
