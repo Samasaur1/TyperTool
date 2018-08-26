@@ -64,4 +64,4 @@ Here is the recommended order. Use the first option that you meet all the requir
 
 ![Demo](https://github.com/Samasaur1/TyperTool/raw/master/typer-demo.gif)
 
-Note: Due to this being online, this GIF has probably been slowed down. To view it at full speed, you can download it, or just install TyperTool and try it out.
+Note: Due to this being online, this GIF has probably been slowed down. To view it at full speed, you can download the `.mov` version [here](https://github.com/Samasaur1/TyperTool/raw/master/typer-demo.mov).
