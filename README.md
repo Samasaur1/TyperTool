@@ -10,7 +10,7 @@ brew install Samasaur1/core/typer
 
 ### [Mint](https://github.com/yonaskolb/mint)
 ```bash
-mint install github_name/repo_name
+mint install Samasaur1/TyperTool
 ```
 
 ### [Marathon](https://github.com/JohnSundell/Marathon)
@@ -23,7 +23,7 @@ marathon install https://raw.githubusercontent.com/Samasaur1/TyperTool/master/So
 curl -fsSL https://raw.githubusercontent.com/Samasaur1/TyperTool/master/install.sh | bash
 ```
 
-### Build From Source
+### Build From Source and Install
 ```bash
 git clone https://github.com/Samasaur1/TyperTool.git
 cd TyperTool
@@ -36,12 +36,26 @@ cd ..
 rm -rf TyperTool
 ```
 
-While all of these methods will work, they will overlap, so only use one.
+### Download and Install
+1. Go to the [latest release](https://github.com/Samasaur1/TyperTool/releases/latest).
+2. Click on the `.zip` file. (for example, `typer-1.0.0.zip`)
+3. Open your `Downloads` folder in the Finder
+4. Open another Finder window.
+5. In that new window, use the `Go` menu and click `Go to folder...` (or press ⇧⌘G).
+6. Type in `usr/local/bin` and click `Go`.
+7. Drag the `typer` file in your `Downloads` folder into the new window.
 
-Mint and Marathon require that Swift 4.0 or greater be installed, but they will by nature be supported *instantaneously* as new versions come out.
+### Notes
+All of these methods work. However, only Homebrew, Mint, and Marathon can update TyperTool for you. Furthermore, **they all install to the same location, so only use one.**
 
-Building from source requires Swift 4.0 or newer, but (obviously) is the latest version. However, this means that it *may* not be as stable as using an installer. On the other hand, code on `master` *should* always be working.
+Mint, Marathon, and Homebrew require tools to be installed, while the other options do not.
 
-The install script does not require anything beyond what comes with macOS, and is instantaneous. If you don't have any of the prerequisites, this is the way to go
+Mint, Marathon, and building from source require that Swift 4.0 or newer be installed, while the other options do not.
 
-Homebrew does not require anything, but there may be some time until newer versions are available on it.
+While unlikely, it is possible that Homebrew will take longer to make updates available than Mint or Marathon.
+
+Here is the recommended order. Use the first option that you meet all the requirements for.
+1. Homebrew
+2. Mint / Marathon
+3. Building from source
+4. Install script / Download and install
