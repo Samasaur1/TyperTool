@@ -2,6 +2,5 @@ curl -LO https://github.com/Samasaur1/TyperTool/releases/download/v1.0.0/typer-1
 unzip typer-1.0.0.zip
 mv typer /usr/local/bin/typer
 rm typer-1.0.0.zip
-
 clear
 echo "Successfully installed TyperTool version 1.0.0"
