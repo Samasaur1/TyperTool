@@ -48,6 +48,16 @@ extension Typer.Rate {
         }
     }
 }
+extension Typer.Rate: ExpressibleByArgument {
+    public init?(argument: String) {
+        switch argument.lowercased() {
+        case "allatonce": self = .allAtOnce
+        case "consistent": self = .consistent
+        case "natural": self = .natural
+        default: return nil
+        }
+    }
+}
 
 class UserDefaultsHelper {
     #if DEBUG
@@ -112,6 +122,14 @@ struct TyperCommand: ParsableCommand {
 //    @Argument(help: .init("The time to wait, in seconds, before starting to type", discussion: "Mutually exclusive with the `--delay` option", valueName: "delay")) var d1: Int = UserDefaultsHelper.shared.delay
 
     @Option(name: .customLong("delay"), help: .init("The time to wait, in seconds, before starting to type", valueName: "delay")) var countdown: Int = UserDefaultsHelper.shared.delay
+    @Option(help: "The rate to type at") var rate: Typer.Rate = UserDefaultsHelper.shared.rate
+//    @Flag(help: "The rate to type at") var rate: Rate = .natural
+//
+//    enum Rate: EnumerableFlag {
+//        case allAtOnce
+//        case natural
+//        case consistent
+//    }
 
     func run() throws {
 //        let countdown = delay ?? d1
@@ -122,7 +140,7 @@ struct TyperCommand: ParsableCommand {
             sleep(1)
         }
         print("Printing...")
-        Typer.type(text)
+        Typer.type(text, typing: rate)
         print("Successfully typed:")
         print(text)
     }
