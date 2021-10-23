@@ -115,25 +115,19 @@ struct TyperCommand: ParsableCommand {
         defaultSubcommand: nil,
         helpNames: .shortAndLong)
 
-    //If you want to be able to run `typer hello 5` instead of `typer hello --delay 5` and still be able to use --delay before the text, uncomment the option and argument lines below, comment out the @Option delay line on line 114, and uncomment the `let countdown` line on line 117
-
-//    @Option(help: .init("The time to wait, in seconds, before starting to type (default: \(UserDefaultsHelper.shared.delay))", discussion: "Mutually exclusive with the `<delay>` argument", valueName: "delay", shouldDisplay: true)) var delay: Int?
     @Argument(help: "The text to type", transform: { $0.replacingOccurrences(of: "\\\\", with: "\\").replacingOccurrences(of: "\\n", with: "\n").replacingOccurrences(of: "\\r", with: "\r").replacingOccurrences(of: "\\t", with: "\t")}) var text: String
-//    @Argument(help: .init("The time to wait, in seconds, before starting to type", discussion: "Mutually exclusive with the `--delay` option", valueName: "delay")) var d1: Int = UserDefaultsHelper.shared.delay
 
     @Option(name: .customLong("delay"), help: .init("The time to wait, in seconds, before starting to type", valueName: "delay")) var countdown: Int = UserDefaultsHelper.shared.delay
     @Option(help: "The rate to type at") var rate: Typer.Rate = UserDefaultsHelper.shared.rate
-//    @Flag(help: "The rate to type at") var rate: Rate = .natural
-//
-//    enum Rate: EnumerableFlag {
-//        case allAtOnce
-//        case natural
-//        case consistent
-//    }
+
+    @Flag(help: .init("Save the given delay and/or rate as future defaults", discussion: "Due to restrictions in the argument parsing library used, you must still pass some text to type — however, this text WILL NOT be typed.")) var config = false
 
     func run() throws {
-//        let countdown = delay ?? d1
-
+        if config {
+            UserDefaultsHelper.shared.delay = countdown
+            UserDefaultsHelper.shared.rate = rate
+            return
+        }
         print("Printing in...")
         for i in 0..<countdown {
             print(countdown - i)
@@ -145,5 +139,29 @@ struct TyperCommand: ParsableCommand {
         print(text)
     }
 }
+//struct TyperConfigCommand: ParsableCommand {
+//    static var configuration = CommandConfiguration(
+//        commandName: "typer-config",
+//        abstract: "Set the defaults for typing",
+//        discussion: "Currently, you can configure the delay and the rate",
+//        version: "1.0.0",
+//        shouldDisplay: true,
+//        subcommands: [],
+//        defaultSubcommand: nil,
+//        helpNames: .shortAndLong
+//    )
+//
+//    @Option(help: "The time to wait, in seconds, before starting to type") var delay: Int?
+//    @Option(help: "The rate to type at") var rate: Typer.Rate?
+//
+//    func run() throws {
+//        if let d = delay {
+//            UserDefaultsHelper.shared.delay = d
+//        }
+//        if let r = rate {
+//            UserDefaultsHelper.shared.rate = r
+//        }
+//    }
+//}
 
 TyperCommand.main()
